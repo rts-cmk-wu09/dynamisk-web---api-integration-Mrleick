@@ -56,3 +56,7 @@ div {
 p {
     text-align: center;
 }
+
+.pokemon-card__list{
+    list-style: none;
+}
