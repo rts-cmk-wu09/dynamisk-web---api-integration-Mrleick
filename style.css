@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     color: black;
+    font-family: 'Roboto', sans-serif;
 }
 
 header {
@@ -20,7 +23,7 @@ body {
     max-width: 400px;
 }
 
-div {
+.pokemon-card {
     border: 1px solid #999;
     background-color: #eee;
     height: 300px;
@@ -28,15 +31,20 @@ div {
     margin: 15px;
     border-radius: 10px;
     text-align: center;
+    box-shadow: 1px 1px #888888;
+}
+
+.pokemon-card__title{
+    font-size: 20px;
 }
 
 .sprites {
-    background-color: #dfdfdf;
+    background-color: white;
     border: 1px solid #ccc;
     height: 120px;
     width: 120px;
     border-radius: 60px;
-
+    outline: black solid 1px;
 }
 
 #pokemon-list {
@@ -46,11 +54,12 @@ div {
     width: 900px;
     margin: auto;
     gap: 10px;
-    background-color: #EE6B2F;
+    background-color: #0dadef;
     margin-top: 50px;
     margin-bottom: 50px;
     border-radius: 10px;
     justify-content: center;
+    outline: white solid 10px;
 }
 
 p {
