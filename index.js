@@ -5,8 +5,18 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=10")
     .then((data) => {
         console.log(data);
         data.results.forEach((pokemon) => {
-            const div = document.createElement("div");// laver en div for hver pokemon
+            const div = document.createElement("div");
             div.classList.add("pokemon-card");
+
+            // Add event listener to the Pokemon div
+            div.addEventListener("click", () => {
+                // Save the Pokemon's data to local storage
+                localStorage.setItem(pokemon.name, JSON.stringify(pokemon));
+                
+                // Redirect to Pokemon details page
+                window.location.href = `pokemon-details.html?name=${pokemon.name}`;
+            });
+
             fetch(pokemon.url)
                 .then((response) => response.json())
                 .then((data) => {
@@ -18,7 +28,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=10")
                     <ul class="pokemon-card__list">${stats}</ul>
                     `;
                 });
-            pokemonList.appendChild(div); // tilføjer vores div til vores pokemon liste
+            pokemonList.appendChild(div);
         });
     });
 
