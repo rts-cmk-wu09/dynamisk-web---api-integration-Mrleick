@@ -23,7 +23,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=10")
                     console.log(data);
                     const stats = data.stats.map((stat) => `<li>${stat.stat.name}: ${stat.base_stat}</li>`).join("");
                     div.innerHTML = `
-                    <p>${pokemon.name}</p>
+                    <p class="pokemon-card__title">${pokemon.name}</p>
                     <img class="sprites" src="${data.sprites.front_default}" alt="${pokemon.name}">
                     <ul class="pokemon-card__list">${stats}</ul>
                     `;
