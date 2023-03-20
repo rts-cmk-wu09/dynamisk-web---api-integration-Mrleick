@@ -1,19 +1,19 @@
+// Mine variabler og værdier
 const pokemonList = document.getElementById("pokemon-list");
 const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
 const header = document.getElementsByTagName("header")[0];
 const limit = 10;
-
 let offset = 10;
 
 function createPokemonDiv(pokemon) {
   const div = document.createElement("div");
   div.classList.add("pokemon-card");
-
   div.addEventListener("click", () => {
     localStorage.setItem(pokemon.name, JSON.stringify(pokemon));
     window.location.href = `pokemon-details.html?name=${pokemon.name}`;
   });
+
 
   fetch(pokemon.url)
     .then((response) => response.json())
@@ -23,7 +23,9 @@ function createPokemonDiv(pokemon) {
         .join("");
       div.innerHTML = `
         <p class="pokemon-card__title">${pokemon.name}</p>
+        <div class="pokeball">
         <img class="sprites" src="${data.sprites.front_default}" alt="${pokemon.name}">
+        </div>
         <ul class="pokemon-card__list">${stats}</ul>
       `;
     });
