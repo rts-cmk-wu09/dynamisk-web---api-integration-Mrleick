@@ -15,7 +15,6 @@ function createPokemonDiv(pokemon) {
     window.location.href = `pokemon-details.html?name=${pokemon.name}`;
   });
 
-
   fetch(pokemon.url)
     .then((response) => response.json())
     .then((data) => {
@@ -34,6 +33,7 @@ function createPokemonDiv(pokemon) {
   return div
 }
 
+// min funktion der fetcher mine pokemons.
 function fetchPokemonList() {
   fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`)
     .then((response) => response.json())
@@ -47,6 +47,8 @@ function fetchPokemonList() {
     });
 }
 
+
+// mine next og prev knapper.
 prevBtn.addEventListener("click", () => {
   if (offset >= limit) {
     offset -= limit;
@@ -61,6 +63,7 @@ nextBtn.addEventListener("click", () => {
 
 fetchPokemonList();
 
+// tilføjer mit billede til min header.
 const img = document.createElement("img");
 img.src = "images/logo.svg";
 header.appendChild(img);
