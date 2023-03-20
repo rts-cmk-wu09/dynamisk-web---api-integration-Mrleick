@@ -2,6 +2,7 @@
 const pokemonList = document.getElementById("pokemon-list");
 const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
+// tager fat i min første header fordi vi kan have flere headers på siden.
 const header = document.getElementsByTagName("header")[0];
 const limit = 10;
 let offset = 10;
@@ -30,7 +31,7 @@ function createPokemonDiv(pokemon) {
       `;
     });
 
-  return div;
+  return div
 }
 
 function fetchPokemonList() {
