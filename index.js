@@ -29,7 +29,6 @@ function createPokemonDiv(pokemon) {
         <ul class="pokemon-card__list">${stats}</ul>
       `;
     });
-
   return div
 }
 
