@@ -23,6 +23,13 @@ body {
     max-width: 400px;
 }
 
+.searchBox{
+    margin: auto;
+    width:300px;
+    text-align: center;
+}
+
+
 .pokemon-card {
     border: 1px solid #999;
     background-color: #eee;
@@ -34,38 +41,57 @@ body {
     box-shadow: 1px 1px #888888;
 }
 
-.pokemon-card:hover {
-    animation: bounce 0.5s linear;
+.pokeball{
+    cursor: pointer;
 }
 
-@keyframes bounce {
+.pokeball:hover {
+    animation: wiggle 0.5s linear;
+  }
+  
+  @keyframes wiggle {
     20% {
-        transform: translateY(-6px);
+      transform: rotate(7deg);
     }
+    
     40% {
-        transform: translateY(0px);
+      transform: rotate(-14deg);
     }
-
+    
+    60% {
+      transform: rotate(4deg);
+    }
+    
     80% {
-        transform: translateY(-2px);
+      transform: rotate(-2deg);
     }
+    
     100% {
-        transform: translateY(0);
+      transform: rotate(0deg);
     }
+  }
+  
 
-}
-.pokemon-card__title{
+.pokemon-card__title {
     font-size: 20px;
     margin: 10px;
 }
 
 .sprites {
-    background-color: white;
-    border: 1px solid #ccc;
-    height: 120px;
-    width: 120px;
     border-radius: 60px;
-    outline: black solid 1px;
+    margin-top: 15px;
+
+}
+
+.pokeball {
+    width: 130px;
+    height: 130px;
+    margin: auto;
+    border-radius: 60px;
+    background-image: url("images/pokeballpng.png");
+    background-size: cover;
+    border-radius: 60px;
+    /* Ensures the image covers the entire div */
 }
 
 #pokemon-list {
@@ -87,6 +113,35 @@ p {
     text-align: center;
 }
 
-.pokemon-card__list{
+.pokemon-card__list {
     list-style: none;
+}
+
+/* Knapper */
+.buttons {
+    width: 900px;
+    margin: auto;
+}
+
+#prev-btn,
+#next-btn {
+    background-color: #f2f2f2;
+    border: 2px solid #ffcb05;
+    border-radius: 10px;
+    color: #000;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#prev-btn:hover,
+#next-btn:hover {
+    background-color: #ffcb05;
+    border: 2px solid #f2f2f2;
+    color: #fff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
 }
