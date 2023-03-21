@@ -1,3 +1,5 @@
+import axios from "./node_modules/axios/dist/esm/axios.js";
+
 // Mine variabler og værdier
 const pokemonList = document.getElementById("pokemon-list");
 const prevBtn = document.getElementById("prev-btn");
@@ -15,16 +17,15 @@ function createPokemonDiv(pokemon) {
     window.location.href = `pokemon-details.html?name=${pokemon.name}`;
   });
 
-  fetch(pokemon.url)
-    .then((response) => response.json())
-    .then((data) => {
-      const stats = data.stats
+  axios.get(pokemon.url)
+    .then(res => {
+      const stats = res.data.stats
         .map((stat) => `<li>${stat.stat.name}: ${stat.base_stat}</li>`)
         .join("");
       div.innerHTML = `
         <p class="pokemon-card__title">${pokemon.name}</p>
         <div class="pokeball">
-        <img class="sprites" src="${data.sprites.front_default}" alt="${pokemon.name}">
+        <img class="sprites" src="${res.data.sprites.front_default}" alt="${pokemon.name}">
         </div>
         <ul class="pokemon-card__list">${stats}</ul>
       `;
@@ -34,27 +35,24 @@ function createPokemonDiv(pokemon) {
 
 // min funktion der fetcher mine pokemons.
 function fetchPokemonList() {
-  fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`)
-    .then((response) => response.json())
-    .then((data) => {
+  axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`)
+    .then(res => {
       pokemonList.innerHTML = "";
-
-      data.results.forEach((pokemon) => {
+      res.data.results.forEach((pokemon) => {
         const div = createPokemonDiv(pokemon);
         pokemonList.appendChild(div);
       });
     });
 }
 
-
-// mine next og prev knapper.
+// min prev button
 prevBtn.addEventListener("click", () => {
   if (offset >= limit) {
     offset -= limit;
     fetchPokemonList();
   }
 });
-
+// min next button
 nextBtn.addEventListener("click", () => {
   offset += limit;
   fetchPokemonList();
