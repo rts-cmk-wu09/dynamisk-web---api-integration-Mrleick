@@ -41,6 +41,10 @@ body {
     box-shadow: 1px 1px #888888;
 }
 
+.pokemon-card__title{
+    text-transform: uppercase;
+    font-weight: bold;
+}
 .pokeball{
     cursor: pointer;
 }
