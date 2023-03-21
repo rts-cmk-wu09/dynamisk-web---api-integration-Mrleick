@@ -1,20 +1,21 @@
+import axios from "./node_modules/axios/dist/esm/axios.js";
+
 const pokemonName = new URLSearchParams(window.location.search).get("name");
 const pokemon = JSON.parse(localStorage.getItem(pokemonName));
 
 const pokemonDetails = document.getElementById("pokemon-details");
 
 // Make an API request to get the details of the Pokemon
-fetch(pokemon.url)
-    .then(response => response.json())
-    .then(data => {
+axios.get(pokemon.url)
+.then(res => {
         // Update the HTML with the details of the Pokemon
         pokemonDetails.innerHTML = `
             <h1>${pokemon.name}</h1>
-            <img src="${data.sprites.front_default}" alt="${pokemon.name}">
+            <img src="${res.data.sprites.front_default}" alt="${pokemon.name}">
             <ul>
-                <li>Weight: ${data.weight}</li>
-                <li>Height: ${data.height}</li>
-                <li>Base Experience: ${data.base_experience}</li>
+                <li>Weight: ${res.data.weight}</li>
+                <li>Height: ${res.data.height}</li>
+                <li>Base Experience: ${res.data.base_experience}</li>
             </ul>
         `;
     })
